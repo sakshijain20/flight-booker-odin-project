@@ -4,6 +4,8 @@ class FlightsController < ApplicationController
   # GET /flights or /flights.json
   def index
     @flights = Flight.all
+    selected_date = Date.civil(params[:year].to_i, params[:month].to_i, params[:day].to_i)
+    @available_flights = Flight.where(from_airport_id: params[:from_airport_id], to_airport_id: params[:to_airport_id],flight_date: selected_date.all_day)
   end
 
   # GET /flights/1 or /flights/1.json
