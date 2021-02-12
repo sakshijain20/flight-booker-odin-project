@@ -34,16 +34,21 @@
 -->
 <%= render "search_form" %> 
 <br><br>
+<%= form_with url: "bookings/new/", method: "get", local: true do |f| %>
 <% if @available_flights.any? %>
   <strong>Search flight results</strong>
   <% @available_flights.each do |flight| %>
-    <p>From :<%= Airport.find(flight.from_airport_id).code %></p>
+    <p>From : <%= Airport.find(flight.from_airport_id).code %></p>
     <p>To : <%=  Airport.find(flight.to_airport_id).code %></p>
-    <p>Date :<%= flight.flight_date.strftime('%B %d, %Y,%A') %></p>
-    <p>Time : <%= flight.flight_date.strftime('%H : %M') %></p>
-    <p>------------------------------------------------------</p><br>
+    <p>Date : <%= flight.flight_date.strftime('%B %d, %Y,%A') %></p>
+    <p>Time : <%= flight.flight_date.strftime('%H : %M') %>
+    <%= radio_button_tag(:flight, flight.id)   %></p><br><br>
+     
+    
     
   <% end %>
+  <%= f.submit "Book selected flight" %>
 <% else %>
   <p>There are no available flights on the selected date</p>
+<% end %>
 <% end %>

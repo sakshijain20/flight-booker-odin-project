@@ -6,7 +6,7 @@
 
   <%= select_tag(:from_airport_id, options_for_select(@airport_options), { prompt: 'From?' }) %>
   <%= select_tag(:to_airport_id, options_for_select(@airport_options), { prompt: 'To?' }) %>
-  <%#= select_tag(:pax, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 3]]), { prompt: 'Number of passengers' }) %>
+  <%= select_tag(:pax, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 3]]), { prompt: 'Number of passengers' }) %>
   <%= select_tag(:day, options_for_select(@day_options)) %>
   <%= select_tag(:month, options_for_select(@month_options)) %>
   <%= select_tag(:year, options_for_select(@year_options)) %>
