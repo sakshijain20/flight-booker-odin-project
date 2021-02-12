@@ -38,14 +38,12 @@
 <% if @available_flights.any? %>
   <strong>Search flight results</strong>
   <% @available_flights.each do |flight| %>
-    <p>From : <%= Airport.find(flight.from_airport_id).code %></p>
-    <p>To : <%=  Airport.find(flight.to_airport_id).code %></p>
+    <p>Departure airport : <%= flight.from_airport.code %></p>
+    <p>Arrival airport : <%=flight.to_airport.code %></p>
     <p>Date : <%= flight.flight_date.strftime('%B %d, %Y,%A') %></p>
     <p>Time : <%= flight.flight_date.strftime('%H : %M') %>
     <%= radio_button_tag(:flight, flight.id)   %></p><br><br>
-     
-    
-    
+      
   <% end %>
   <%= f.submit "Book selected flight" %>
 <% else %>

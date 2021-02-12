@@ -1,0 +1,11 @@
+<h1>Create a new Booking </h1><br><br>
+
+<div>
+<strong>Depature Airport : </strong><%=  @selected_flight.from_airport.code %><br>
+<strong>Arrival airport : </strong><%= arrival_airport = @selected_flight.to_airport.code %><br>
+<strong>Date : </strong><%= selected_date = @selected_flight.flight_date.strftime('%B %d, %Y') %><br>
+<strong>Time  </strong>: <%= scheduled_time = @selected_flight.flight_date.strftime('%H:%M') %><br><br>
+</div>
+
+<%= render "new_booking_form" %>
+

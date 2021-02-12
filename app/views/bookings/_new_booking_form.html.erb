@@ -1,0 +1,12 @@
+<%= form_with model: @booking, local: true do |f| %>
+  <%= f.fields_for :passengers do |passengers_data| %>
+    
+    <%= f.label :name, 'Name: '%>
+    <%= passengers_data.text_field :name, placeholder: "Passenger's name" %>
+    <%= f.label :email, 'Email: '%>
+    <%= passengers_data.email_field :email, placeholder: "name@example.com" %>
+   
+  <% end %>
+  <%= f.hidden_field :flight_id, value: params[:flight] %>
+  <%= f.submit 'Purchase Ticket' %>
+<% end %> 
