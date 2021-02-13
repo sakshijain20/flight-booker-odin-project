@@ -35,18 +35,20 @@
 <%= render "search_form" %> 
 <br><br>
 <%= form_with url: "bookings/new/", method: "get", local: true do |f| %>
-<% if @available_flights.any? %>
-  <strong>Search flight results</strong>
-  <% @available_flights.each do |flight| %>
-    <p>Departure airport : <%= flight.from_airport.code %></p>
-    <p>Arrival airport : <%=flight.to_airport.code %></p>
-    <p>Date : <%= flight.flight_date.strftime('%B %d, %Y,%A') %></p>
-    <p>Time : <%= flight.flight_date.strftime('%H : %M') %>
-    <%= radio_button_tag(:flight, flight.id)   %></p><br><br>
-      
+<% unless @available_flights.nil? %>
+  <% if @available_flights.any? %>
+    <strong>Search flight results</strong>
+    <% @available_flights.each do |flight| %>
+      <p>Departure airport : <%= flight.from_airport.code %></p>
+      <p>Arrival airport : <%=flight.to_airport.code %></p>
+      <p>Date : <%= flight.flight_date.strftime('%B %d, %Y,%A') %></p>
+      <p>Time : <%= flight.flight_date.strftime('%H : %M') %>
+      <%= radio_button_tag(:flight, flight.id)   %></p><br><br>
+        
+    <% end %>
+    <%= f.submit "Book selected flight" %>
+  <% else %>
+    <p>There are no available flights on the selected date</p>
   <% end %>
-  <%= f.submit "Book selected flight" %>
-<% else %>
-  <p>There are no available flights on the selected date</p>
 <% end %>
 <% end %>

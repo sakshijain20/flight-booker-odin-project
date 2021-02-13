@@ -11,6 +11,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     if @booking.save
       flash[:success] = 'Booking saved!'
+      PassengerMailer.thankyou_email.deliver_now
       redirect_to booking_path(@booking)
     else
       flash[:alert] = 'An error occured!'
@@ -31,4 +32,5 @@ private
   def booking_params
     params.require(:booking).permit(:flight_id,passengers_attributes: [:name,:email])
   end
+
 
