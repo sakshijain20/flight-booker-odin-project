@@ -1,4 +1,4 @@
-# PROJECT : BUILDING ADVANCED FORMS
+# PROJECT : Flight Booker
   In this project we’ll build the first three steps of a typical checkout process for booking a one-way flight:
 
     A typical airline booking flow:
